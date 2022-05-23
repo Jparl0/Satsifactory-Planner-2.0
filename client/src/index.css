@@ -5,9 +5,49 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background:url("components/images/Satis.png");
+  background-repeat: no-repeat;  
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.main-page {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif
+}
+
+.NavBar {
+  text-align: center;
+  display: contain;
+  position: relative;
+  
+}
+
+form {
+  text-align: center;
+}
+
+.machine-card {
+  margin:auto;
+  margin: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 300px;
+  background-color: rgba(83, 224, 213, 0.344);
+  text-align: center;
+  height:540px;
+}
+
+.machines-list{
+  display: flex;
+  flex-direction: wrap;
+  align-items: center;
 }
