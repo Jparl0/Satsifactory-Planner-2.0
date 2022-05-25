@@ -9,5 +9,7 @@ class Board < ApplicationRecord
     has_many :machine_ores, dependent: :destroy
     has_many :board_ores, dependent: :destroy
     has_many :board_items, dependent: :destroy
+    has_many :machine_items, dependent: :destroy
 
+    validates :name, presence: true, uniqueness: true
 end

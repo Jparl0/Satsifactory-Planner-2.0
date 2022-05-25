@@ -35,7 +35,7 @@ form {
   text-align: center;
 }
 
-.machine-card {
+.machineOres-cards {
   margin:auto;
   margin: 20px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -46,8 +46,31 @@ form {
   height:540px;
 }
 
-.machines-list{
+.board-cards {
+  margin:auto;
+  margin: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 300px;
+  background-color: rgba(83, 224, 213, 0.344);
+  text-align: center;
+  height:300px;
+}
+
+.score-boards-holder{
   display: flex;
   flex-direction: wrap;
   align-items: center;
+}
+
+.ore-image {
+  max-width: 75%;  
+  height: auto;  
+}
+
+
+path {
+  fill: none;
+  stroke: black;
+  height: 960;
 }

@@ -1,30 +1,40 @@
 import React, {useState, useEffect} from "react";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import BoardCreation from "./BoardCreation.js";
+import BoardPage from "./BoardPage.js";
 import HomePage from "./HomePage.js";
 import Login from "./Login.js";
-
-
+import ScoreBoardPage from "./ScoreBoardPage.js";
+import TreeHolder from "./TreeHolder.js";
 
 function App() {
 
-  const [currentUser, setCurrentUser] = useState([])
+  const [currentUser, setCurrentUser] = useState(false)
+  const [boardToCreateData, postBoardToCreateData] = useState({name: ""})
   // console.log(currentUser)
 
-  useEffect((currentUser) => {
+  useEffect(() => {
     fetch("/userInSession")
     .then(r => r.json())
     .then(userLoggedIn => {
-      setCurrentUser(userLoggedIn)
-      console.log(currentUser)
+      if (userLoggedIn.error !== "No User Logged In") {
+        setCurrentUser(userLoggedIn)
+      }
+      else {
+        setCurrentUser(false)
+      }
     })
   }, [])
-
 
   return (
     <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomePage currentUser={currentUser} setCurrentUser={setCurrentUser}/>} />
           <Route path='/Login' element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser}/>} />
+          <Route path='/BoardPage' element={<BoardPage currentUser={currentUser} setCurrentUser={setCurrentUser} boardToCreateData={boardToCreateData} postBoardToCreateData={postBoardToCreateData} />} />
+          <Route path='/BoardCreation' element={<BoardCreation currentUser={currentUser} setCurrentUser={setCurrentUser} boardToCreateData={boardToCreateData} postBoardToCreateData={postBoardToCreateData}/>} />
+          <Route path='/ScoreBoardPage' element={<ScoreBoardPage currentUser={currentUser} setCurrentUser={setCurrentUser} boardToCreateData={boardToCreateData} postBoardToCreateData={postBoardToCreateData}/>} />
+          <Route path='/TreeHolder' element={<TreeHolder currentUser={currentUser} setCurrentUser={setCurrentUser}/>} />
         </Routes>  
     </BrowserRouter>
     );

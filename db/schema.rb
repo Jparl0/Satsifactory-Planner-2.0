@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2022_05_21_015714) do
   enable_extension "plpgsql"
 
   create_table "board_items", force: :cascade do |t|
+    t.integer "item_amount"
     t.bigint "board_id", null: false
     t.bigint "item_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -25,6 +26,7 @@ ActiveRecord::Schema.define(version: 2022_05_21_015714) do
   end
 
   create_table "board_ores", force: :cascade do |t|
+    t.integer "ore_amount"
     t.bigint "board_id", null: false
     t.bigint "ore_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -43,20 +45,28 @@ ActiveRecord::Schema.define(version: 2022_05_21_015714) do
 
   create_table "items", force: :cascade do |t|
     t.string "name"
+    t.string "ore_base"
+    t.integer "ore_required"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "machine_items", force: :cascade do |t|
+    t.boolean "is_active"
+    t.integer "input_amount"
+    t.integer "output_amount"
+    t.bigint "board_id", null: false
     t.bigint "item_id", null: false
     t.bigint "machine_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["board_id"], name: "index_machine_items_on_board_id"
     t.index ["item_id"], name: "index_machine_items_on_item_id"
     t.index ["machine_id"], name: "index_machine_items_on_machine_id"
   end
 
   create_table "machine_ores", force: :cascade do |t|
+    t.integer "ore_mined"
     t.bigint "board_id", null: false
     t.bigint "ore_id", null: false
     t.bigint "machine_id", null: false
@@ -98,6 +108,7 @@ ActiveRecord::Schema.define(version: 2022_05_21_015714) do
   add_foreign_key "board_ores", "boards"
   add_foreign_key "board_ores", "ores"
   add_foreign_key "boards", "users"
+  add_foreign_key "machine_items", "boards"
   add_foreign_key "machine_items", "items"
   add_foreign_key "machine_items", "machines"
   add_foreign_key "machine_ores", "boards"

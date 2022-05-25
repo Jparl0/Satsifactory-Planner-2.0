@@ -46,6 +46,6 @@ class BoardOresController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def board_ore_params
-      params.require(:board_ore).permit(:User_id, :Ore_id)
+      params.require(:board_ore).permit(:ore_amount, :board_id, :ore_id)
     end
 end

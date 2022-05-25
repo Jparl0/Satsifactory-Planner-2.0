@@ -13,13 +13,11 @@ function Login({currentUser, setCurrentUser}) {
     )
 
     function handleUserLoginDataOnChange (e) {
-
         updateUserToLogin({ ...userToLogin , [e.target.name]: e.target.value})
-
     }
 
     function handleLoginSubmit (e) {    
-
+        e.preventDefault()
         fetch(`/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -27,20 +25,23 @@ function Login({currentUser, setCurrentUser}) {
         })
         .then(r => r.json())
         .then(signedInUser => {
-            setCurrentUser(signedInUser)
-            console.log(currentUser)
+            if ((signedInUser.error === `Username or password don't match`) || (signedInUser.error === `Incorrect password`)) {
+                alert(`Username or password don't match`)
+            }
+          else {
+              setCurrentUser(signedInUser)
+              navigate('/')
+          }
         })
-        navigate('/')
     }
 
   return (
     <div>
-        <header>
+        <header className="header">
             <h1>
                 Login
             </h1>
         </header>
-
         <div>
             <form onSubmit={handleLoginSubmit}>
                 <label >User Name</label>

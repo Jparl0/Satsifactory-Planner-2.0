@@ -1,19 +1,20 @@
-import React from 'react'
-
-
+import React, {useState} from 'react'
+// import {useNavigate} from "react-router-dom"
 
 function NavBar({currentUser, setCurrentUser}) {
+
+    // const navigate = useNavigate();
 
     function logUserOut(){
         fetch("/logOut", {method: "DELETE"})
         .then(r => r.json())
-        .then( deleteResponse => {
-            setCurrentUser([])
+        .then(() => {
+            setCurrentUser(false)
+            // navigate("/")
         })
     }
 
   return (
-
     <div className="NavBar" id="nav-bar">
                 <h3>
                     <a href="http://localhost:4000/">
@@ -21,10 +22,15 @@ function NavBar({currentUser, setCurrentUser}) {
                     </a>
                 </h3>
                 <h3>
-                    <a href="http://localhost:4000/">
-                    Create Board
+                    <a href="http://localhost:4000/BoardCreation">
+                        Board Creation/Selection
                     </a>
                 </h3>
+                {/* <h3>
+                    <a href="http://localhost:4000/ScoreBoardPage">
+                    Personal Score Boards
+                    </a>
+                </h3> */}
                 <h3>
                     {
                         currentUser ? 
@@ -38,8 +44,6 @@ function NavBar({currentUser, setCurrentUser}) {
                     }
                 </h3>
     </div>
-
-
   )
 }
 

@@ -15,7 +15,8 @@ Rails.application.routes.draw do
   post "/login", to: "session#login"
   get "/userInSession", to: "session#get_logged_in_user"
   delete "/logOut", to: "session#log_out"
-
+  post "/boardSession", to: "session#board_session"
+  post "/machineOreAndBoardOre", to: "machine_ores#combo_post"
 
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!

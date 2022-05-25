@@ -1,5 +1,5 @@
 class MachineOreSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :ore_mined
   has_one :board
   has_one :ore
   has_one :machine
