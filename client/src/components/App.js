@@ -1,5 +1,6 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import AboutPage from "./AboutPage.js";
 import BoardCreation from "./BoardCreation.js";
 import BoardPage from "./BoardPage.js";
 import HomePage from "./HomePage.js";
@@ -10,26 +11,32 @@ import TreeHolder from "./TreeHolder.js";
 function App() {
 
   const [currentUser, setCurrentUser] = useState(false)
+
   const [boardToCreateData, postBoardToCreateData] = useState({name: ""})
   // console.log(currentUser)
 
-  useEffect(() => {
-    fetch("/userInSession")
-    .then(r => r.json())
-    .then(userLoggedIn => {
-      if (userLoggedIn.error !== "No User Logged In") {
-        setCurrentUser(userLoggedIn)
-      }
-      else {
-        setCurrentUser(false)
-      }
-    })
-  }, [])
+  // maybe take this out of useeffect to fix async? 
+  // this will cause page to rerender everytime on 
+
+  // removing this prevents cards from rendering
+  // useEffect(() => {
+  //   fetch("/userInSession")
+  //   .then(r => r.json())
+  //   .then(userLoggedIn => {
+  //     if (userLoggedIn.error !== "No User Logged In") {
+  //       setCurrentUser(userLoggedIn)
+  //     }
+  //     else {
+  //       setCurrentUser(false)
+  //     }
+  //   })
+  // }, [])
 
   return (
     <BrowserRouter>
         <Routes>
           <Route path='/' element={<HomePage currentUser={currentUser} setCurrentUser={setCurrentUser}/>} />
+          <Route path='/AboutPage' element={<AboutPage currentUser={currentUser} setCurrentUser={setCurrentUser}/>} />
           <Route path='/Login' element={<Login currentUser={currentUser} setCurrentUser={setCurrentUser}/>} />
           <Route path='/BoardPage' element={<BoardPage currentUser={currentUser} setCurrentUser={setCurrentUser} boardToCreateData={boardToCreateData} postBoardToCreateData={postBoardToCreateData} />} />
           <Route path='/BoardCreation' element={<BoardCreation currentUser={currentUser} setCurrentUser={setCurrentUser} boardToCreateData={boardToCreateData} postBoardToCreateData={postBoardToCreateData}/>} />

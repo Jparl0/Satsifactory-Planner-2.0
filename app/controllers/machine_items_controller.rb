@@ -46,6 +46,6 @@ class MachineItemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def machine_item_params
-      params.require(:machine_item).permit(:Item_id, :Machine_id)
+      params.require(:machine_item).permit(:item_id, :machine_id, :is_active, :input_amount, :output_amount, :MI_name, :board_ore_id)
     end
 end

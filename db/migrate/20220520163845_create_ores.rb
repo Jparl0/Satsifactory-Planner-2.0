@@ -4,6 +4,7 @@ class CreateOres < ActiveRecord::Migration[6.1]
       t.string :name
       t.string :ore_type
       t.string :purity_level
+      t.float :purity_multiplier
 
       t.timestamps
     end

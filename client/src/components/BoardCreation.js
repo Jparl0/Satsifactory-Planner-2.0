@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useNavigate} from "react-router-dom"
 import BoardSelector from './BoardSelector';
+import NavBar from './NavBar';
 
 function BoardCreation({currentUser, setCurrentUser, boardToCreateData, postBoardToCreateData}) {
 
@@ -8,7 +9,7 @@ function BoardCreation({currentUser, setCurrentUser, boardToCreateData, postBoar
 
     const [userBoardsData, findUserBoardsData] = useState([])
     
-    console.log(userBoardsData)
+    // console.log(userBoardsData)
     
     function handlePostBoardDataOnChange (e) {
       postBoardToCreateData({ ...boardToCreateData, [e.target.name]: e.target.value, user_id: currentUser.id})
@@ -22,6 +23,19 @@ function BoardCreation({currentUser, setCurrentUser, boardToCreateData, postBoar
         })
       }, [])
 
+      // useEffect(() => {
+      //   fetch("/userInSession")
+      //   .then(r => r.json())
+      //   .then(userLoggedIn => {
+      //     if (userLoggedIn.error !== "No User Logged In") {
+      //       setCurrentUser(userLoggedIn)
+      //     }
+      //     else {
+      //       setCurrentUser(false)
+      //     }
+      //   })
+      // }, [])
+
     function boardPost (e) {
         e.preventDefault()
         fetch(`/boards`, {
@@ -31,24 +45,14 @@ function BoardCreation({currentUser, setCurrentUser, boardToCreateData, postBoar
           })
         .then(r => r.json())
         .then(postedBoard => { 
-            console.log(boardToCreateData)
             if (postedBoard.name === 'has already been taken') {
-                  alert("Board Name Taken! Try another name")
+              alert("Board Name Taken! Try another name")
             }
             else {
-                fetch(`/boardSession`, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify( boardToCreateData )
-                    })
-                    .then(r => r.json())
-                    .then(postedSessionBoard => {
-                        postBoardToCreateData(postedSessionBoard)
-                        navigate('/BoardPage')
-                    })
+              console.log(postedBoard)
+              navigate('/BoardPage')
             }})
     }
-    
   return (
     <div>
           <header className="header">
@@ -56,6 +60,9 @@ function BoardCreation({currentUser, setCurrentUser, boardToCreateData, postBoar
               Board Creation/Selection
             </h1>
           </header>
+          <div className='Nav-bar-container'>
+            <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
+          </div>
           <div>
             <form onSubmit={boardPost}>
               <label>New Board Name</label>
@@ -66,7 +73,7 @@ function BoardCreation({currentUser, setCurrentUser, boardToCreateData, postBoar
           <div className='score-boards-holder'>
             {
               (userBoardsData.filter(filteredBoards => filteredBoards.user_id === currentUser.id)).map((mappedBoardsData) => {
-                return (<BoardSelector key={mappedBoardsData.id} mappedBoardsData={mappedBoardsData} userBoardsData={userBoardsData} findUserBoardsData={findUserBoardsData} boardToCreateData={boardToCreateData} postBoardToCreateData={postBoardToCreateData}/>)
+                return (<BoardSelector key={mappedBoardsData.id} currentUser={currentUser} mappedBoardsData={mappedBoardsData} userBoardsData={userBoardsData} findUserBoardsData={findUserBoardsData} boardToCreateData={boardToCreateData} postBoardToCreateData={postBoardToCreateData}/>)
               })
             }
           </div>

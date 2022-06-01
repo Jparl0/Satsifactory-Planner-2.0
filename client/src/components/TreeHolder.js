@@ -9,9 +9,9 @@ function TreeHolder({currentUser, setCurrentUser}) {
   return (
     <div>
         <header className="header">
-            <h1>Personal Tree</h1>
+            <h1>Personal Tree Coming Soon!</h1>
         </header>                 
-        <div>
+        <div className='Nav-bar-container'>
             <NavBar currentUser={currentUser} setCurrentUser={setCurrentUser}/>
         </div>
         <div>

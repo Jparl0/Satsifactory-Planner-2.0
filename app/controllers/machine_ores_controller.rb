@@ -38,23 +38,21 @@ class MachineOresController < ApplicationController
     @machine_ore.destroy
   end
 
-  # def combo_post
-  #   # @machine_ore = MachineOre.new(machine_ore_params)
+  def updated_ore_mined
+    @machine_ores = MachineOre.all
 
-  #   # if @machine_ore.save
-  #   #   render json: @machine_ore, status: :created, location: @machine_ore
-  #   # else
-  #   #   render json: @machine_ore.errors, status: :unprocessable_entity
-  #   # end
-  #     @board_ore = BoardOre.new(board_ore_params)
-
-  #     if @board_ore.save
-  #       render json: @board_ore, status: :created, location: @board_ore
-  #     else
-  #       render json: @board_ore.errors, status: :unprocessable_entity
-  #     end
+    # byebug
+    @machine_ores.map do |machine_ore|
+      # byebug
+      machine_ore.update(ore_mined: ((machine_ore.machine.output) * (machine_ore.ore.purity_multiplier)), MO_name: ((machine_ore.ore.name) + '-' + (machine_ore.machine.name)))
+    # if @machine_ores.update(machine_ore_params)
+      # else
+      # render json: @machine_ores.errors, status: :unprocessable_entity
+      # end
+    end
+    render json: @machine_ores
     
-  # end
+  end
 
 
   private
@@ -65,10 +63,10 @@ class MachineOresController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def machine_ore_params
-      params.require(:machine_ore).permit(:ore_mined, :board_id, :ore_id, :machine_id)
+      params.require(:machine_ore).permit(:ore_mined, :board_id, :ore_id, :machine_id, :MO_name)
     end
 
-    def board_ore_params
-      params.require(:board_ore).permit(:ore_amount, :board_id, :ore_id, :machine_id)
-    end
+    # def board_ore_params
+    #   params.require(:board_ore).permit(:ore_amount, :board_id, :ore_id, :machine_id, :MO_name)
+    # end
 end

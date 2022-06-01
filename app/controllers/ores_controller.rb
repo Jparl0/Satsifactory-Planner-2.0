@@ -47,6 +47,6 @@ class OresController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ore_params
-      params.require(:ore).permit(:name, :ore_type, :purity_level)
+      params.require(:ore).permit(:name, :ore_type, :purity_level, :purity_multiplier)
     end
 end

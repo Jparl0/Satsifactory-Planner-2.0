@@ -53,20 +53,24 @@ ActiveRecord::Schema.define(version: 2022_05_21_015714) do
 
   create_table "machine_items", force: :cascade do |t|
     t.boolean "is_active"
+    t.string "MI_name"
     t.integer "input_amount"
     t.integer "output_amount"
     t.bigint "board_id", null: false
     t.bigint "item_id", null: false
     t.bigint "machine_id", null: false
+    t.bigint "board_ore_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["board_id"], name: "index_machine_items_on_board_id"
+    t.index ["board_ore_id"], name: "index_machine_items_on_board_ore_id"
     t.index ["item_id"], name: "index_machine_items_on_item_id"
     t.index ["machine_id"], name: "index_machine_items_on_machine_id"
   end
 
   create_table "machine_ores", force: :cascade do |t|
     t.integer "ore_mined"
+    t.string "MO_name"
     t.bigint "board_id", null: false
     t.bigint "ore_id", null: false
     t.bigint "machine_id", null: false
@@ -82,6 +86,8 @@ ActiveRecord::Schema.define(version: 2022_05_21_015714) do
     t.integer "voltage"
     t.integer "input"
     t.integer "output"
+    t.integer "multiplier"
+    t.string "input_resource1"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -90,6 +96,7 @@ ActiveRecord::Schema.define(version: 2022_05_21_015714) do
     t.string "name"
     t.string "ore_type"
     t.string "purity_level"
+    t.float "purity_multiplier"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -108,6 +115,7 @@ ActiveRecord::Schema.define(version: 2022_05_21_015714) do
   add_foreign_key "board_ores", "boards"
   add_foreign_key "board_ores", "ores"
   add_foreign_key "boards", "users"
+  add_foreign_key "machine_items", "board_ores"
   add_foreign_key "machine_items", "boards"
   add_foreign_key "machine_items", "items"
   add_foreign_key "machine_items", "machines"

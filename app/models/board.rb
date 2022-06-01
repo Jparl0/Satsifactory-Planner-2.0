@@ -2,7 +2,7 @@ class Board < ApplicationRecord
 
     belongs_to :user
 
-    has_many :ores, through: :board_ores
+    has_many :ores, through: :board_ores, through: :machine_ores
     has_many :items, through: :board_items
     has_many :ores, through: :machine_ores
 

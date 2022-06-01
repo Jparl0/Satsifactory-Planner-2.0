@@ -1,5 +1,4 @@
 body {
-  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -18,17 +17,60 @@ code {
   text-align: center;
 }
 
+iframe {
+  align-items: center;
+}
+
 h1 {
   text-align: center;
-  color: white;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  color: black;
   font-family: Georgia, 'Times New Roman', Times, serif
 }
 
 .NavBar {
+  list-style-type: none;
+  display: grid;
+  gap: 25px;
   text-align: center;
+}
+
+.Nav-bar-container {
+  align-items: center;
+  padding-left: 15%;
+  padding-right: 15%;
   display: contain;
   position: relative;
-  
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 100px;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline;
+  float: left;
+}
+
+.board-BO-data {
+  color: white;
+  text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
+.about-page-p-text {
+  font-size: xx-large;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
+
+a {
+  display: block;
+  align-content: center;
+  padding: 15px;
+  background-color: #dddddd;
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
 form {
@@ -51,7 +93,18 @@ form {
   margin: 20px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   transition: 0.3s;
-  width: 300px;
+  width: 600px;
+  background-color: rgba(83, 224, 213, 0.344);
+  text-align: center;
+  height:600px;
+}
+
+.MO-cards {
+  margin:auto;
+  margin: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 600px;
   background-color: rgba(83, 224, 213, 0.344);
   text-align: center;
   height:300px;
@@ -68,9 +121,21 @@ form {
   height: auto;  
 }
 
+.board-BO-data {
+  margin: auto;
+  margin: 10px;
+  display: inline-block;
+  flex-direction: wrap;
+  align-items: center;
+  height: 1px;
+}
 
 path {
   fill: none;
   stroke: black;
   height: 960;
+}
+
+.updatebutton {
+  text-align: center;
 }
