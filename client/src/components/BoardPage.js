@@ -90,7 +90,9 @@ function BoardPage({currentUser, setCurrentUser, boardToCreateData, postBoardToC
       })
       .then(r => r.json())
       .then(() => {})
-      navigate(`/ScoreBoardPage`)
+      document.location.reload(true)
+
+      // navigate(`/ScoreBoardPage`)
     })
   }
 
@@ -127,8 +129,8 @@ function BoardPage({currentUser, setCurrentUser, boardToCreateData, postBoardToC
             <input className="submit-button" type="submit" value="Submit" />
           </form> 
         </div>
-        <div>
-          <button onClick={updateMOoremined}>Update pair data</button>
+        <div className='update-button'>
+          <button className='update-button' onClick={updateMOoremined}>Update pair data</button>
         </div>
         <div className='score-boards-holder'>
             {

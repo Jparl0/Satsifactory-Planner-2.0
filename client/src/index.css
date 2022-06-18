@@ -13,34 +13,13 @@ code {
     monospace;
 }
 
-.main-page {
-  text-align: center;
-}
-
 iframe {
   align-items: center;
 }
 
 h1 {
   text-align: center;
-  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
-  color: black;
   font-family: Georgia, 'Times New Roman', Times, serif
-}
-
-.NavBar {
-  list-style-type: none;
-  display: grid;
-  gap: 25px;
-  text-align: center;
-}
-
-.Nav-bar-container {
-  align-items: center;
-  padding-left: 15%;
-  padding-right: 15%;
-  display: contain;
-  position: relative;
 }
 
 ul {
@@ -55,14 +34,14 @@ li {
   float: left;
 }
 
-.board-BO-data {
+header {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   color: white;
-  text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
 }
 
-.about-page-p-text {
-  font-size: xx-large;
-  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+label {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  color: white;
 }
 
 a {
@@ -75,6 +54,76 @@ a {
 
 form {
   text-align: center;
+}
+
+p {
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  color: white;
+}
+
+.main-page {
+  text-align: center;
+}
+
+.white-black-border {
+  text-align: center;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  color: white;
+}
+
+.NavBar {
+  list-style-type: none;
+  display: grid;
+  gap: 25px;
+  text-align: center;
+}
+
+.Nav-bar-container {
+  align-items: center;
+  padding-left: 23%;
+  padding-right: 15%;
+  display: contain;
+  position: relative;
+}
+
+.video_container{
+  text-align: center;
+}
+
+.board-BO-data {
+  font-size: large;
+  color: white;
+  text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+}
+
+.about-page-p-text {
+  font-size: x-large;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+.p-text {
+  font-size: x-large;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  color: white;
+  text-align: center;
+  padding: 1px;
+  padding-left: 150px;
+  padding-right: 150px;
+}
+
+.copy-right-p-text {
+  font-size: small;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  color: white;
+  text-align: center;
+  bottom: 0;
+  padding-left: 25px;
+  padding-right: 25px;
 }
 
 .machineOres-cards {
@@ -136,6 +185,13 @@ path {
   height: 960;
 }
 
-.updatebutton {
+.update-button {
   text-align: center;
 }
+
+.sub-title {
+  text-align: center;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  color: white;
+}
+

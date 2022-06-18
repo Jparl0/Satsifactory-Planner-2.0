@@ -1,13 +1,13 @@
 import React, {useState, useEffect} from 'react'
 import ScoreBoardCards from './ScoreBoardCards'
 import NavBar from "./NavBar.js";
-import FilterBoards from './FilterBoards';
+// import FilterBoards from './FilterBoards';
 
 function ScoreBoardPage({currentUser, setCurrentUser, boardToCreateData, postBoardToCreateData}) {
 
   const [ boardOresData, setBoardOresData ] = useState([])
-  console.log(currentUser)
-
+  const [ filterValue, setFilterValue] = useState("")
+  
     useEffect(() => {
         fetch('/board_ores')
         .then(r => r.json())
@@ -16,19 +16,9 @@ function ScoreBoardPage({currentUser, setCurrentUser, boardToCreateData, postBoa
         })
       }, [])
 
-      // useEffect(() => {
-      //   fetch("/userInSession")
-      //   .then(r => r.json())
-      //   .then(userLoggedIn => {
-      //     if (userLoggedIn.error !== "No User Logged In") {
-      //       setCurrentUser(userLoggedIn)
-      //     }
-      //     else {
-      //       setCurrentUser(false)
-      //     }
-      //   })
-      // }, [])
-
+  console.log(boardToCreateData)
+  console.log(boardOresData)
+ 
       useEffect(() => {
         fetch("/getSelectedBoard")
         .then(r => r.json())
@@ -43,23 +33,39 @@ function ScoreBoardPage({currentUser, setCurrentUser, boardToCreateData, postBoa
         })
       }, [])
 
-      
+      // let filterValue = "";
+
+      function handleFilterBoardName (e) {
+        setFilterValue(e.target.value)
+      }
+
+      function renderCards () {
+        let handledBoardByName = []
+        if (filterValue == "") {
+          handledBoardByName = (boardOresData.filter(filteredBOs => filteredBOs.board.user_id === boardToCreateData.user.id)).map((mappedBoardOresData) => {
+            return (<ScoreBoardCards key={mappedBoardOresData.id} mappedBoardOresData={mappedBoardOresData}/>)
+          })
+      }
+       else (
+        handledBoardByName = (boardOresData.filter(filteredBOs => filteredBOs.board.name === filterValue)).map((mappedBoardOresData) => {
+          return (<ScoreBoardCards key={mappedBoardOresData.id} mappedBoardOresData={mappedBoardOresData}/>)
+        })
+       )
+       return handledBoardByName
+      }
+
       function renderFilterBoardSelect () {
-        if (boardOresData !== false) {
-              (boardOresData.boards).map(board => {
+        // console.log()
+        let resultsOfMap = [];
+        if (currentUser !== false) {
+          // console.log(boardOresData)
+              resultsOfMap = (currentUser.boards).map((board) => {
                 return (
                   <option value={board.name}>{board.name}</option>
                 )
               })
-          // (boardOresData.boards).forEach(board => {
-          //   return (
-          //     <option value={board.name}>{board.name}</option>
-          //   )
-          // })
         }
-        else {
-          console.log(boardOresData)
-        }
+        return resultsOfMap
       }
     // console.log(boardToCreateData)
   
@@ -76,9 +82,10 @@ function ScoreBoardPage({currentUser, setCurrentUser, boardToCreateData, postBoa
         <div>
           <form>
             <label className='label-text'>Filter by Board Name</label>
-            <select name="board-names-list" id="board-names-list">
+            <select onChange={handleFilterBoardName} name="board-names-list" id="board-names-list">
+              <option value="" selected>All</option>             
               {
-                // renderFilterBoardSelect()
+                renderFilterBoardSelect()
               }
             </select>
           </form> 
@@ -86,9 +93,10 @@ function ScoreBoardPage({currentUser, setCurrentUser, boardToCreateData, postBoa
         </div>
         <div className='score-boards-holder'>
             {
-                (boardOresData.filter(filteredBOs => filteredBOs.board.user_id === boardToCreateData.user.id)).map((mappedBoardOresData) => {
-                    return (<ScoreBoardCards key={mappedBoardOresData.id} mappedBoardOresData={mappedBoardOresData}/>)
-                })
+              renderCards()
+                // (boardOresData.filter(filteredBOs => filteredBOs.board.user_id === boardToCreateData.user.id)).map((mappedBoardOresData) => {
+                //     return (<ScoreBoardCards key={mappedBoardOresData.id} mappedBoardOresData={mappedBoardOresData}/>)
+                // })
             }
         </div>
     </div>

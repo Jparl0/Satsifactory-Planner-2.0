@@ -22,7 +22,7 @@ function BoardSelector({mappedBoardsData, postBoardToCreateData, boardToCreateDa
                 }
               else {
                 postBoardToCreateData(selectedBoard)
-                navigate('/BoardPage')
+                navigate('/ScoreBoardPage')
               }
             })
           })

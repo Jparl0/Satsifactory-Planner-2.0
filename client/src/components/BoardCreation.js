@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import {useNavigate} from "react-router-dom"
 import BoardSelector from './BoardSelector';
+import CopyRightFooter from './CopyRightFooter';
 import NavBar from './NavBar';
 
 function BoardCreation({currentUser, setCurrentUser, boardToCreateData, postBoardToCreateData}) {
@@ -77,45 +78,10 @@ function BoardCreation({currentUser, setCurrentUser, boardToCreateData, postBoar
               })
             }
           </div>
+          <CopyRightFooter />
     </div>
   )
 }
 
 export default BoardCreation
 
-
-// filter(filteredBoards => filteredBoards.board.user_id === boardToCreateData.user.id))
-// 
-// const [machineToCreateData, postMachineToCreateData] = useState(
-//     {
-//         name: "",
-//         voltage: 0,
-//         input: 0,
-//         output: 0
-//     }
-// )
-
-// console.log(machineToCreateData)
-
-// function handlePostMachineDataOnChange (e) {
-
-//   postMachineToCreateData({ ...machineToCreateData, [e.target.name]: e.target.value})
-
-// }
-
-// function handlePostMachineIntegerDataOnChange (e) {
-
-//   postMachineToCreateData({ ...machineToCreateData, [e.target.name]: parseInt(e.target.value)})
-
-// }
-
-// <form onSubmit={machinePost}>
-// <select onChange={handlePostMachineDataOnChange} name="name" id="machineName">
-//   <option value="Miner">Miner</option>
-//   <option value="Assembler">Assembler</option>
-//   <option value="Constructor">Constructor</option>
-// </select>
-// <label >Voltage</label>
-// <input onChange={handlePostMachineIntegerDataOnChange} type="number" id="voltage" name="voltage"></input>
-// <input className="submit-button" type="submit" value="Submit" />
-// </form> 

@@ -43,7 +43,7 @@ function ScoreBoardCards({mappedBoardOresData}) {
 
         <div className='machineOres-cards'>
             <h2>Total Ore Amount: {mappedBoardOresData.ore_amount}</h2> 
-            <p>Board Name: {mappedBoardOresData.board.name}</p>
+            <p>Board Attached: {mappedBoardOresData.board.name}</p>
             <p>Ore Name: {mappedBoardOresData.ore.name}</p>
             <img 
                 src={`${oreSrc}`}
@@ -51,7 +51,7 @@ function ScoreBoardCards({mappedBoardOresData}) {
                 className='ore-image'
             />
             <p>Purity: {mappedBoardOresData.ore.purity_level}</p>
-            <h3>Ore Mined Per hour: {mappedBoardOresData.machine_ores.ore_mined}</h3>
+            <h3 className='white-black-border'>Ore Mined Per hour: {mappedBoardOresData.machine_ores.ore_mined}</h3>
             <button id={mappedBoardOresData.id} onClick={fastForwardDay}>Fastforward 1 day</button>
         </div>
   )

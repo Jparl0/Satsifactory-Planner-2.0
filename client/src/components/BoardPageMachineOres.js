@@ -6,8 +6,8 @@ function BoardPageMachineOres({mappedMachineOresData, boardToCreateData}) {
 
   return (
     <div className='MO-cards'>
-        <h2>Board Name: {mappedMachineOresData.board.name}</h2>
-        <h4>Machine/Ore Pair: {mappedMachineOresData.MO_name}</h4>
+        <h2>Board Attached: {mappedMachineOresData.board.name}</h2>
+        <h4 className='white-black-border'>Machine/Ore Pair: {mappedMachineOresData.MO_name}</h4>
         {/* <p>Machine Attached: {mappedMachineOresData.machine.name}</p> */}
         
         {/* <p>Ore Purity: {mappedMachineOresData.ore.purity_level}</p> */}

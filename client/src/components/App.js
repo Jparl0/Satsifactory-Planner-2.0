@@ -13,7 +13,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState(false)
 
   const [boardToCreateData, postBoardToCreateData] = useState({name: ""})
-  // console.log(currentUser)
 
   // maybe take this out of useeffect to fix async? 
   // this will cause page to rerender everytime on 

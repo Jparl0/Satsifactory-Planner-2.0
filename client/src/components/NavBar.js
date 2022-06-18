@@ -69,13 +69,6 @@ function NavBar({currentUser, setCurrentUser}) {
             </li>
             <li>
                 <h3>
-                    <a href="http://localhost:4000/BoardPage">
-                    Machine/Ore -> Board 
-                    </a>
-                </h3>
-            </li>
-            <li>
-                <h3>
                     <a href="http://localhost:4000/ScoreBoardPage">
                     Board View
                     </a>
@@ -83,8 +76,15 @@ function NavBar({currentUser, setCurrentUser}) {
             </li>
             <li>
                 <h3>
+                    <a href="http://localhost:4000/BoardPage">
+                    Machine/Ore -> Board 
+                    </a>
+                </h3>
+            </li>
+            <li>
+                <h3>
                     <a href="http://localhost:4000/TreeHolder">
-                    Personal Inventory Tree
+                    Factory Tree
                     </a>
                 </h3>
             </li>
