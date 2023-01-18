@@ -9,9 +9,7 @@ function BoardCreation({currentUser, setCurrentUser, boardToCreateData, postBoar
     const navigate = useNavigate();
 
     const [userBoardsData, findUserBoardsData] = useState([])
-    
-    // console.log(userBoardsData)
-    
+        
     function handlePostBoardDataOnChange (e) {
       postBoardToCreateData({ ...boardToCreateData, [e.target.name]: e.target.value, user_id: currentUser.id})
     }
@@ -23,19 +21,6 @@ function BoardCreation({currentUser, setCurrentUser, boardToCreateData, postBoar
           findUserBoardsData(indexedOreData)
         })
       }, [])
-
-      // useEffect(() => {
-      //   fetch("/userInSession")
-      //   .then(r => r.json())
-      //   .then(userLoggedIn => {
-      //     if (userLoggedIn.error !== "No User Logged In") {
-      //       setCurrentUser(userLoggedIn)
-      //     }
-      //     else {
-      //       setCurrentUser(false)
-      //     }
-      //   })
-      // }, [])
 
     function boardPost (e) {
         e.preventDefault()

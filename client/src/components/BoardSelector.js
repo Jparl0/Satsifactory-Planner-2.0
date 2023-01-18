@@ -9,7 +9,6 @@ function BoardSelector({mappedBoardsData, postBoardToCreateData, boardToCreateDa
         fetch(`/boards/${e.target.id}`)
         .then(r => r.json())
         .then(indexedBoardData => { 
-          // console.log(indexedBoardData)
           fetch(`/boardSelection`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -28,44 +27,6 @@ function BoardSelector({mappedBoardsData, postBoardToCreateData, boardToCreateDa
           })
     }
 
-  // function handleBoardOrePost (e) {
-  //   e.preventDefault()
-  //   fetch(`/machine_ores`, {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify( machineAndOreToCreateData )
-  //   })
-  //   .then(r => r.json())
-  //   .then(() => {
-  //     fetch(`/board_ores`, {
-  //       method: "POST",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify( boardOreToCreateData )
-  //     })
-  //     .then(r => r.json())
-  //     .then(() => {})
-  //     navigate(`/ScoreBoardPage`)
-  //   })
-  // }
-//   function selectBoard (e) {    
-//     e.preventDefault()
-//     fetch(`/boardSelection`, {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//     body: JSON.stringify( userToLogin )
-//     })
-//     .then(r => r.json())
-//     .then(signedInUser => {
-//         if ((signedInUser.error === `Incorrect password`)) {
-//             alert(`Username or password don't match`)
-//         }
-//       else {
-//           setCurrentUser(signedInUser)
-//           navigate('/')
-//       }
-//     })
-// }
-
   return (
     <div className='board-cards'>
         <h2>Board Name: {mappedBoardsData.name}</h2> 
@@ -81,13 +42,6 @@ function BoardSelector({mappedBoardsData, postBoardToCreateData, boardToCreateDa
               </div>)
             })
           }
-        {/* <img 
-            src={`${oreSrc}`}
-            alt={mappedBoardsData.ore.name}
-            className='ore-image'
-        />  */}
-        {/* <p>Machines: </p> */}
-        {/* <h3>Potential Ore Mined: </h3> */}
         <button id={mappedBoardsData.id} onClick={selectBoard}>Select</button>
     </div>
   )

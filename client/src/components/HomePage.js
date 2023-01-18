@@ -5,22 +5,6 @@ import SatisGif from './SatisGif.mp4'
 
 function HomePage({currentUser, setCurrentUser}) {
 
-    console.log(currentUser)
-
-    // useEffect(() => {
-    //   fetch("/userInSession")
-    //   .then(r => r.json())
-    //   .then(userLoggedIn => {
-    //     if (userLoggedIn.error !== "No User Logged In") {
-    //       setCurrentUser(userLoggedIn)
-    //     }
-    //     else {
-    //       setCurrentUser(false)
-    //     }
-    //   })
-    // }, [])
-
-
   return (
     <div className="main-page">
         <header className="header">
@@ -49,10 +33,6 @@ function HomePage({currentUser, setCurrentUser}) {
           </p>
         </div>
         <CopyRightFooter />
-        {/* <footer>
-          <p className='copy-right-p-text'>An AnthorNet platform © 2019-2022 | Gaming Tool/Wiki/Database to empower the players.
-The assets comes from Satisfactory or from websites created and owned by Coffee Stain Studios, who hold the copyright of Satisfactory. All trademarks and registered trademarks present in the image are proprietary to Coffee Stain Studios.</p>
-        </footer> */}
     </div>
   )
 }

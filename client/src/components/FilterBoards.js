@@ -15,12 +15,3 @@ function FilterBoards({currentUser}) {
 }
 
 export default FilterBoards
-
-
-// {
-//   (currentUser.boards).map((board) => {
-//     return (
-//       <option value={board.name}>{board.name}</option>
-//     )
-//   })
-// }

@@ -33,8 +33,6 @@ function ScoreBoardPage({currentUser, setCurrentUser, boardToCreateData, postBoa
         })
       }, [])
 
-      // let filterValue = "";
-
       function handleFilterBoardName (e) {
         setFilterValue(e.target.value)
       }
@@ -55,10 +53,8 @@ function ScoreBoardPage({currentUser, setCurrentUser, boardToCreateData, postBoa
       }
 
       function renderFilterBoardSelect () {
-        // console.log()
         let resultsOfMap = [];
         if (currentUser !== false) {
-          // console.log(boardOresData)
               resultsOfMap = (currentUser.boards).map((board) => {
                 return (
                   <option value={board.name}>{board.name}</option>
@@ -66,9 +62,7 @@ function ScoreBoardPage({currentUser, setCurrentUser, boardToCreateData, postBoa
               })
         }
         return resultsOfMap
-      }
-    // console.log(boardToCreateData)
-  
+      }  
   return (
     <div>
         <header className="header">
@@ -94,9 +88,6 @@ function ScoreBoardPage({currentUser, setCurrentUser, boardToCreateData, postBoa
         <div className='score-boards-holder'>
             {
               renderCards()
-                // (boardOresData.filter(filteredBOs => filteredBOs.board.user_id === boardToCreateData.user.id)).map((mappedBoardOresData) => {
-                //     return (<ScoreBoardCards key={mappedBoardOresData.id} mappedBoardOresData={mappedBoardOresData}/>)
-                // })
             }
         </div>
     </div>
@@ -104,21 +95,3 @@ function ScoreBoardPage({currentUser, setCurrentUser, boardToCreateData, postBoa
 }
 
 export default ScoreBoardPage
-
-
-
-
-
-
-// (boardOresData.filter(filteredBOs => filteredBOs.board.user_id === boardToCreateData.user.id )).map((mappedBoardOresData) => {
-//   return (<ScoreBoardCards key={mappedBoardOresData.id} boardOresData={boardOresData} mappedBoardOresData={mappedBoardOresData}/>)
-// })
-
-// (boardOresData.filter(filteredBOs => 
-
-// THIS IS PROBLEM LINE, SOMETHING WRONG WITH BOARD.user.id
-//   filteredBOs.board.user_id === boardToCreateData.user.id 
-  
-//   )).map((mappedBoardOresData) => {
-//   return (<ScoreBoardCards key={mappedBoardOresData.id} boardOresData={boardOresData} mappedBoardOresData={mappedBoardOresData}/>)
-// })

@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
+
 import AboutPage from "./AboutPage.js";
 import BoardCreation from "./BoardCreation.js";
 import BoardPage from "./BoardPage.js";
@@ -13,23 +14,6 @@ function App() {
   const [currentUser, setCurrentUser] = useState(false)
 
   const [boardToCreateData, postBoardToCreateData] = useState({name: ""})
-
-  // maybe take this out of useeffect to fix async? 
-  // this will cause page to rerender everytime on 
-
-  // removing this prevents cards from rendering
-  // useEffect(() => {
-  //   fetch("/userInSession")
-  //   .then(r => r.json())
-  //   .then(userLoggedIn => {
-  //     if (userLoggedIn.error !== "No User Logged In") {
-  //       setCurrentUser(userLoggedIn)
-  //     }
-  //     else {
-  //       setCurrentUser(false)
-  //     }
-  //   })
-  // }, [])
 
   return (
     <BrowserRouter>

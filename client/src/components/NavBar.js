@@ -46,7 +46,6 @@ function NavBar({currentUser, setCurrentUser}) {
                 </h3>
             </li>
             <li>
-                {/* ONLY SHOW WHEN USER NOT LOGGED IN */}
                 <h3>
                     {
                         currentUser ? 

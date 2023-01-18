@@ -5,8 +5,6 @@ import Limestone_Ore from './Limestone_Ore.png'
 
 function ScoreBoardCards({mappedBoardOresData}) {
 
-    // const [dynamicMinedValue, setDynamicMinedValue] = useState(mappedBoardOresData.ore_amount)
-
     let oreSrc = "";
     
     switch(mappedBoardOresData.ore.ore_type) {
@@ -27,7 +25,6 @@ function ScoreBoardCards({mappedBoardOresData}) {
         fetch(`/board_ores/${e.target.id}`)
         .then(r => r.json())
         .then(indexedBoardOreData => {
-            //  console.log(indexedBoardOreData)
             fetch(`/board_ores/${e.target.id}`, {
             method: "PATCH",
             headers: { "Content-Type": "application/json" },
@@ -40,7 +37,6 @@ function ScoreBoardCards({mappedBoardOresData}) {
     }
 
   return (
-
         <div className='machineOres-cards'>
             <h2>Total Ore Amount: {mappedBoardOresData.ore_amount}</h2> 
             <p>Board Attached: {mappedBoardOresData.board.name}</p>

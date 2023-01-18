@@ -58,19 +58,7 @@ function BoardPage({currentUser, setCurrentUser, boardToCreateData, postBoardToC
     .then(r => r.json())
     .then(() => {
       document.location.reload(true)
-      // fetch("/getSelectedBoard")
-      // .then(r => r.json())
-      // .then(boardSelected => 
-      //   {
-      //     if (boardSelected.error !== "No Board Selected") {
-      //       postBoardToCreateData(boardSelected)
             alert("Pairs Updated")
-        //   }
-        //   else {
-        //     console.log(boardSelected)
-        //   }
-        // })
-
     })
   }
 
@@ -91,8 +79,6 @@ function BoardPage({currentUser, setCurrentUser, boardToCreateData, postBoardToC
       .then(r => r.json())
       .then(() => {})
       document.location.reload(true)
-
-      // navigate(`/ScoreBoardPage`)
     })
   }
 
@@ -144,47 +130,3 @@ function BoardPage({currentUser, setCurrentUser, boardToCreateData, postBoardToC
 }
 
 export default BoardPage
-
-
-
-
-
-// let boardOreToCreateData = {
-//   ore_amount: 0,
-//   board_id: 0, 
-//   ore_id: 0, 
-//   machine_id: 0
-// } 
-
-// let machineAndOreToCreateData = {
-//   ore_mined: 0,
-//   board_id: 0, 
-//   ore_id: 0, 
-//   machine_id: 0
-// } 
-
-// const [machineOresToFilterByBoard, setMachineOresToFilterByBoard] = useState([])
-// // console.log(boardOreToCreateData)
-
-// function handlePostMachineDataOnChange (e) {
-
-//   // let boardOreToCreateData = {
-//   //   ore_amount: 0,
-//   //   board_id: 0, 
-//   //   ore_id: 0, 
-//   //   machine_id: 0
-//   // } 
-
-//   // let machineAndOreToCreateData = {
-//   //   ore_mined: 0,
-//   //   board_id: 0, 
-//   //   ore_id: 0, 
-//   //   machine_id: 0
-//   // } 
-
-//   machineAndOreToCreateData = ({ ...machineAndOreToCreateData, [e.target.name]: parseInt(e.target.value), board_id: (boardToCreateData.id)})
-//   boardOreToCreateData = ({ ...boardOreToCreateData, ore_id: (machineAndOreToCreateData.ore_id), machine_id: (machineAndOreToCreateData.machine_id), board_id: (boardToCreateData.id)})
-
-//   // postMachineAndOreToCreateData({ ...machineAndOreToCreateData, [e.target.name]: parseInt(e.target.value), board_id: (boardToCreateData.id)})
-//   // postBoardOreToCreateData({ ...boardOreToCreateData, ore_id: (machineAndOreToCreateData.ore_id), machine_id: (machineAndOreToCreateData.machine_id), board_id: (boardToCreateData.id)})
-// }
